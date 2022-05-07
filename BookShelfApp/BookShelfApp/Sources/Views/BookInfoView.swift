@@ -32,7 +32,7 @@ class BookInfoView: UIView, ViewRepresentable {
   let titleLabel: UILabel = {
     let label = UILabel()
     label.text = "title"
-    label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+    label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
     return label
   }()
   
@@ -107,8 +107,8 @@ class BookInfoView: UIView, ViewRepresentable {
     
     verticalStackView.snp.makeConstraints {
       $0.leading.equalTo(posterImageView.snp.trailing).offset(10)
-      $0.top.equalTo(safeArea).offset(10)
-      $0.bottom.equalTo(safeArea).offset(-10)
+      $0.top.equalTo(safeArea).offset(15)
+      $0.bottom.equalTo(safeArea).offset(-15)
       $0.trailing.equalTo(safeArea).offset(-10)
     }
     

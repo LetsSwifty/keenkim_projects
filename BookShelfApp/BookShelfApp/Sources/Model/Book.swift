@@ -19,3 +19,25 @@ struct BookInfo: Decodable {
   let items: [Book]
   let total: Int
 }
+
+extension Book {
+  func toBook() -> Book {
+    let title = removeTags(title)
+    let author = removeTags(author)
+
+    return Book(
+      image: image,
+      title: title,
+      author: author,
+      price: price,
+      link: link)
+  }
+}
+
+private func removeTags(_ string: String) -> String {
+  return string
+    .replacingOccurrences(of: "<b>", with: "")
+    .replacingOccurrences(of: "</b>", with: "")
+    .replacingOccurrences(of: "|", with: "")
+    .replacingOccurrences(of: "&amp;", with: "&")
+}

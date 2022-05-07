@@ -42,7 +42,7 @@ class SearchViewController: BaseViewController {
   }
   
   func configureNavigationBar() {
-    title = "영화검색"
+    title = "도서검색"
     self.navigationController?.navigationBar.prefersLargeTitles = true
     
     let rightBarButton = UIBarButtonItem(title: "즐겨찾기 목록", style: .done, target: self, action: #selector(onFavoriteList))
@@ -52,14 +52,14 @@ class SearchViewController: BaseViewController {
   func configureSearchController() {
     let searchController = UISearchController(searchResultsController: nil)
     searchController.searchResultsUpdater = self
-    searchController.searchBar.placeholder = "영화명을 검색해보세요"
+    searchController.searchBar.placeholder = "도서명을 검색해보세요"
     navigationItem.hidesSearchBarWhenScrolling = false
     navigationItem.searchController = searchController
   }
   
   func fetchData(query: String, perPage: Int = 15, start: Int = 1) {
     self.apiService.fetchBookInfo(query: query, display: perPage, start: start) { code, data in
-      let items = data.items.map { $0 }
+      let items = data.items.map { $0.toBook() }
       
       self.pageableCount = data.total
       self.bookList += items
@@ -149,6 +149,7 @@ extension SearchViewController: UISearchResultsUpdating {
 extension SearchViewController: SearchTableViewCellDelegate {
   func starButtonClicked(searchTableViewCell: SearchTableViewCell) {
     print(#function)
-    // TODO: 즐겨찾기 구현
+    // TODO: 즐겨찾기 구현하기. 버튼 토글만 해뒀음
+    searchTableViewCell.infoView.starButton.isSelected.toggle()
   }
 }

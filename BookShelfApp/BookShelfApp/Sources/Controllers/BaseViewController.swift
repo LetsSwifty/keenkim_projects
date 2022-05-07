@@ -11,7 +11,7 @@ class BaseViewController: UIViewController {
   
   // MARK: - Metric
   struct Metric {
-    static let cellHeight: CGFloat = 110
+    static let cellHeight: CGFloat = 100
   }
   
   // MARK: - View Life-Cycle
