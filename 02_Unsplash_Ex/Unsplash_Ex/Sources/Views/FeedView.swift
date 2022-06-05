@@ -8,14 +8,9 @@
 import UIKit
 import SnapKit
 
-protocol GridViewDelegate {
-    func onSelected(item: UnsplashType)
-}
-
 final class FeedView: UIView {
     // MARK: - Properties
     private var items: [UnsplashType] = []
-    private var gridViewDelegate: GridViewDelegate? = nil
     
     // MARK: - Metric
     struct Metric {
